@@ -1,4 +1,4 @@
-package entities;
+package entities.pack;
 
 public enum PackState {
   ACTIVE("active");

@@ -1,36 +1,34 @@
 package entities;
 
+import domain.BatchState;
+import entities.pack.Pack;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class Batch {
 
-  private final String batchID;
+  private final String id;
   private final LocalDate expiryDate;
+  private BatchState state;
+  private final String productScheme;
+  private final String productCode;
   private List<Pack> packs;
 
-  public Batch(String batchID, String productScheme, String productCode, List<Pack> packs, LocalDate expiryDate) {
+  public Batch(BatchState state, String id, String productScheme, String productCode, List<Pack> packs, LocalDate expiryDate) {
+    this.state = state;
+    this.productScheme = productScheme;
+    this.productCode = productCode;
     this.packs = packs;
-    this.batchID = batchID;
+    this.id = id;
     this.expiryDate = expiryDate;
   }
 
-  public String getId() {
-    return batchID;
+  public BatchState getState() {
+    return state;
   }
 
-  public LocalDate getExpiryDate() {
-    return expiryDate;
-  }
-
-  public String getPackBySerialNumber(String serialNumber) {
-    Optional<Pack> first = packs.stream().filter(p -> p.packSerialNumber.equals(serialNumber)).findFirst();
-    if(first.isPresent()){
-      return first.get().packSerialNumber;
-    }
+  public Pack getPackBySerial(String serial) {
     throw new UnsupportedOperationException();
   }
-
 }

@@ -1,7 +1,7 @@
 package actions;
 
 import domain.VerificationService;
-import entities.PackState;
+import entities.pack.PackState;
 
 public class VerificationAPI {
 
