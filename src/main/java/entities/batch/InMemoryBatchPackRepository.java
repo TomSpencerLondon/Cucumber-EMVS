@@ -25,7 +25,7 @@ public class InMemoryBatchPackRepository implements BatchPackRepository {
 
     private Predicate<Batch> byBatchIdAndProductCode(String batchId, ProductCode productCode) {
         return b -> b.id.equals(batchId) &&
-                b.productCode.equals(productCode);
+                b.productCode.isEquals(productCode);
     }
 
     public void save(Batch batch) {
