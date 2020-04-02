@@ -1,11 +1,32 @@
 package entities.product;
 
-import entities.product.Product;
-import entities.product.ProductCode;
-import entities.product.ProductRepository;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class InMemoryProductRepository implements ProductRepository {
+    private List<Product> products;
+
+    public InMemoryProductRepository() {
+        products = new ArrayList<>();
+    }
+
     public Product findByProductCode(ProductCode productCode) {
+        Optional<Product> product = products.stream().filter(byProductCode(productCode)).findAny();
+        if (product.isPresent()) {
+            return product.get();
+        }
+
         throw new UnsupportedOperationException();
+    }
+
+    private Predicate<Product> byProductCode(ProductCode productCode) {
+        return p -> p.getProductCode().code.equals(productCode.code) &&
+                p.getProductCode().scheme.equals(productCode.scheme);
+    }
+
+    public void save(Product product) {
+        products.add(product);
     }
 }
