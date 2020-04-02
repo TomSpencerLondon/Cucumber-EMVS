@@ -1,6 +1,6 @@
 package domain;
 
-import entities.Batch;
+import entities.batch.Batch;
 import entities.product.ProductCode;
 
 public class PackService {

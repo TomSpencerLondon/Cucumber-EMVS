@@ -1,8 +1,8 @@
 package acceptance;
 
 import actions.VerificationResponseObject;
-import domain.BatchState;
-import entities.Batch;
+import entities.batch.BatchState;
+import entities.batch.Batch;
 import entities.pack.Pack;
 import entities.pack.PackState;
 import entities.product.Product;

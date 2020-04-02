@@ -14,4 +14,12 @@ public class Product {
     public ProductCode getProductCode() {
         return productCode;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public ProductState getState() {
+        return state;
+    }
 }

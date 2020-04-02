@@ -1,6 +1,5 @@
-package entities;
+package entities.batch;
 
-import domain.BatchState;
 import entities.pack.Pack;
 
 import java.time.LocalDate;

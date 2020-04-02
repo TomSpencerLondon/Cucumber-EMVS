@@ -1,6 +1,4 @@
-package domain;
-
-import entities.product.ProductState;
+package entities.batch;
 
 public enum BatchState {
     ACTIVE("active");

@@ -1,7 +1,7 @@
 package domain;
 
 import actions.VerificationRequestObject;
-import entities.Batch;
+import entities.batch.Batch;
 import entities.pack.Pack;
 import entities.pack.PackState;
 import entities.product.Product;
