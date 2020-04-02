@@ -8,4 +8,9 @@ public class ProductCode {
         this.code = code;
         this.scheme = scheme;
     }
+
+    public boolean isEquals(ProductCode productCode) {
+        return code.equals(productCode.code) &&
+                scheme.equals(productCode.scheme);
+    }
 }

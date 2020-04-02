@@ -22,8 +22,7 @@ public class InMemoryProductRepository implements ProductRepository {
     }
 
     private Predicate<Product> byProductCode(ProductCode productCode) {
-        return p -> p.getProductCode().code.equals(productCode.code) &&
-                p.getProductCode().scheme.equals(productCode.scheme);
+        return p -> p.getProductCode().isEquals(productCode);
     }
 
     public void save(Product product) {
