@@ -5,6 +5,7 @@ import actions.VerificationRequestObject;
 import domain.PackService;
 import domain.ProductService;
 import domain.VerificationService;
+import entities.product.ProductCode;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -29,7 +30,8 @@ public class StepDefinitions {
   @When("Dispenser asks for verification")
   public void dispenserAsksForVerification() {
     VerificationAPI verificationAPI = new VerificationAPI(new VerificationService(new ProductService(), new PackService()));
-    VerificationRequestObject verificationRequestObject = new VerificationRequestObject("12345678901231", "GTIN", "123",
+    ProductCode productCode = new ProductCode("12345678901231", "GTIN");
+    VerificationRequestObject verificationRequestObject = new VerificationRequestObject(productCode, "123",
         LocalDate.of(2020, 1, 1), "456", "Ibuprofen");
     ScenarioContext.captureResponse(verificationAPI.verify(verificationRequestObject));
   }

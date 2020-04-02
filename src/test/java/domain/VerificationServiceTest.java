@@ -3,9 +3,9 @@ package domain;
 import actions.VerificationRequestObject;
 import entities.Batch;
 import entities.pack.Pack;
-import entities.product.Product;
 import entities.pack.PackState;
-import entities.product.ProductState;
+import entities.product.Product;
+import entities.product.ProductCode;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -26,14 +26,15 @@ class VerificationServiceTest {
 
     @Test
     void should_retrieve_product_and_pack_and_return_pack_state() {
-        String productCode = "12345678901231";
+        ProductCode productCode = new ProductCode("12345678901231", "GTIN");
         String batchId = "123";
         String packSerial = "456";
-        VerificationRequestObject requestObject = new VerificationRequestObject(productCode, "GTIN", batchId,
+        VerificationRequestObject requestObject = new VerificationRequestObject(productCode, batchId,
                 LocalDate.of(2020, 1, 1), packSerial, "Ibuprofen");
 
         given(productService.retrieve(productCode)).willReturn(product);
-        given(packService.retrieve(batchId)).willReturn(batch);
+        given(product.getProductCode()).willReturn(productCode);
+        given(packService.retrieve(batchId, productCode)).willReturn(batch);
         given(batch.getPackBySerial(packSerial)).willReturn(pack);
         given(pack.getState()).willReturn(PackState.ACTIVE);
 

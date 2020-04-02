@@ -18,7 +18,7 @@ public class VerificationService {
 
   public PackState verify(VerificationRequestObject requestObject) {
     Product product = productService.retrieve(requestObject.productCode);
-    Batch batch = packService.retrieve(requestObject.batchId);
+    Batch batch = packService.retrieve(requestObject.batchId, product.getProductCode());
     Pack pack = batch.getPackBySerial(requestObject.packSerialNumber);
     return pack.getState();
   }

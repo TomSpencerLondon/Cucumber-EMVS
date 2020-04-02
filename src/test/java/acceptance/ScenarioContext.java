@@ -6,6 +6,8 @@ import entities.Batch;
 import entities.pack.Pack;
 import entities.pack.PackState;
 import entities.product.Product;
+import entities.product.ProductCode;
+import entities.product.ProductState;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,7 +22,8 @@ public class ScenarioContext {
   public static VerificationResponseObject verificationResponseObject;
 
   public static void createProduct(String productState, String productScheme, String productCode, String productName) {
-    products.add(new Product(productState, productScheme, productCode, productName));
+    ProductCode code = new ProductCode(productScheme, productCode);
+    products.add(new Product(ProductState.valueOf(productState), code, productName));
   }
 
   public static void createBatch(String batchState, String batchID, String productScheme, String productCode, String packSerialNumber,
