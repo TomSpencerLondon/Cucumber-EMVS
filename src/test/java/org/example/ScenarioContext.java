@@ -13,4 +13,7 @@ public class ScenarioContext {
   public static void createProduct(String productScheme, String productCode, String productName) {
     products.add(new Product(productScheme, productCode, productName));
   }
+
+  public static void createBatch(String batchID, String productScheme, String productCode) {
+  }
 }
