@@ -1,6 +1,7 @@
 package org.example;
 
-import actions.VerifyPackResponseObject;
+import actions.ProductAggregate;
+import actions.VerificationResponseObject;
 import entities.Batch;
 import entities.Pack;
 import entities.Product;
@@ -12,7 +13,7 @@ import java.util.List;
 public class ScenarioContext {
   static List<Product> products = new ArrayList<>();
   static List<Batch> batches = new ArrayList<>();
-  public static VerifyPackResponseObject verificationResponseObject;
+  public static VerificationResponseObject verificationResponseObject;
 
   public static void createProduct(String productScheme, String productCode, String productName) {
     products.add(new Product(productScheme, productCode, productName));
@@ -22,7 +23,7 @@ public class ScenarioContext {
     batches.add(new Batch(batchID, productScheme, productCode, Collections.singletonList(new Pack(packSerialNumber, packState))));
   }
 
-  public static void captureResponse(VerifyPackResponseObject response) {
+  public static void captureResponse(VerificationResponseObject response) {
     verificationResponseObject = response;
   }
 }
