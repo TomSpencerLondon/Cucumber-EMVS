@@ -29,7 +29,7 @@ public class StepDefinitions {
   public void dispenserAsksForVerification() {
     VerificationAPI verificationAPI = new VerificationAPI(new VerificationService(), new ProductAggregateFactory());
     VerificationRequestObject verificationRequestObject = new VerificationRequestObject("12345678901231", "GTIN", "123",
-        LocalDate.of(2020, 1, 1), "456");
+        LocalDate.of(2020, 1, 1), "456", "Ibuprofen");
     ScenarioContext.captureResponse(verificationAPI.verify(verificationRequestObject));
   }
 

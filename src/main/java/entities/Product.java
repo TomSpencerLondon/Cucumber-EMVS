@@ -10,4 +10,12 @@ public class Product {
     this.productCode = productCode;
     this.productName = productName;
   }
+
+  public String getProductCode() {
+    return productCode;
+  }
+
+  public String getProductScheme() {
+    return productScheme;
+  }
 }
