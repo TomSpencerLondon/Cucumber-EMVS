@@ -1,11 +1,11 @@
 package domain;
 
+import actions.VerificationRequestObject;
 import entities.PackState;
-import entities.ProductAggregate;
 
 public class VerificationService {
 
-  public PackState verify(ProductAggregate productAggregate) {
+  public PackState verify(VerificationRequestObject productAggregate) {
     throw new UnsupportedOperationException("Implement me!");
   }
 }

@@ -1,6 +1,5 @@
 package org.example;
 
-import actions.ProductAggregateFactory;
 import actions.VerificationAPI;
 import actions.VerificationRequestObject;
 import domain.VerificationService;
@@ -27,7 +26,7 @@ public class StepDefinitions {
 
   @When("Dispenser asks for verification")
   public void dispenserAsksForVerification() {
-    VerificationAPI verificationAPI = new VerificationAPI(new VerificationService(), new ProductAggregateFactory());
+    VerificationAPI verificationAPI = new VerificationAPI(new VerificationService());
     VerificationRequestObject verificationRequestObject = new VerificationRequestObject("12345678901231", "GTIN", "123",
         LocalDate.of(2020, 1, 1), "456", "Ibuprofen");
     ScenarioContext.captureResponse(verificationAPI.verify(verificationRequestObject));
