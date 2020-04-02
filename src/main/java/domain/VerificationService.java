@@ -1,23 +1,25 @@
 package domain;
 
 import actions.VerificationRequestObject;
+import entities.Batch;
+import entities.pack.Pack;
 import entities.pack.PackState;
+import entities.product.Product;
 
 public class VerificationService {
 
+  private final ProductService productService;
+  private final PackService packService;
+
   public VerificationService(ProductService productService, PackService packService) {
-
-
+    this.productService = productService;
+    this.packService = packService;
   }
 
   public PackState verify(VerificationRequestObject requestObject) {
-    // product = productService.retrieve(product code)
-    // check (and maybe return) product state
-    //
-    // batch packservice.retrieve(batch id)
-    // check (and maybe return) batch state
-    //
-    // return batch.getpack(serial).state
-    throw new UnsupportedOperationException("Implement me!");
+    Product product = productService.retrieve(requestObject.productCode);
+    Batch batch = packService.retrieve(requestObject.batchId);
+    Pack pack = batch.getPackBySerial(requestObject.packSerialNumber);
+    return pack.getState();
   }
 }

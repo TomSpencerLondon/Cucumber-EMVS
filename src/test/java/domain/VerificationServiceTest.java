@@ -33,9 +33,7 @@ class VerificationServiceTest {
                 LocalDate.of(2020, 1, 1), packSerial, "Ibuprofen");
 
         given(productService.retrieve(productCode)).willReturn(product);
-        given(product.getState()).willReturn(ProductState.ACTIVE);
         given(packService.retrieve(batchId)).willReturn(batch);
-        given(batch.getState()).willReturn(BatchState.ACTIVE);
         given(batch.getPackBySerial(packSerial)).willReturn(pack);
         given(pack.getState()).willReturn(PackState.ACTIVE);
 
