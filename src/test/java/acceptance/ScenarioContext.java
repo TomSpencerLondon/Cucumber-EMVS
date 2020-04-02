@@ -21,7 +21,7 @@ public class ScenarioContext {
   protected static ProductRepository productRepository = new InMemoryProductRepository();
 
   public static void createProduct(String productState, String productScheme, String productCode, String productName) {
-    ProductCode code = new ProductCode(productScheme, productCode);
+    ProductCode code = new ProductCode(productCode, productScheme);
     productRepository.save(new Product(ProductState.fromString(productState), code, productName));
   }
 
