@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
 import domain.VerificationService;
+import entities.PackState;
+import entities.ProductAggregate;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -27,7 +29,7 @@ class VerificationAPITest {
 
   @Test
   public void returns_pack_state() {
-    String actualState = "active";
+    PackState actualState = PackState.ACTIVE;
 
     given(factory.create(requestObject)).willReturn(productAggregate);
     given(service.verify(productAggregate)).willReturn(actualState);
@@ -36,7 +38,7 @@ class VerificationAPITest {
     VerificationResponseObject response = verificationAPI.verify(
         requestObject);
 
-    assertEquals(actualState, response.state);
+    assertEquals(actualState.state, response.state);
   }
 
 

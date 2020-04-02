@@ -1,6 +1,5 @@
 package org.example;
 
-import actions.ProductAggregate;
 import actions.VerificationResponseObject;
 import entities.Batch;
 import entities.Pack;

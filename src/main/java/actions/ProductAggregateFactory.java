@@ -1,5 +1,7 @@
 package actions;
 
+import entities.ProductAggregate;
+
 public class ProductAggregateFactory {
 
   public ProductAggregate create(VerificationRequestObject requestObject) {

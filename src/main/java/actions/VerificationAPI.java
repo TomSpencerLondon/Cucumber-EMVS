@@ -1,6 +1,8 @@
 package actions;
 
 import domain.VerificationService;
+import entities.PackState;
+import entities.ProductAggregate;
 
 public class VerificationAPI {
 
@@ -14,7 +16,8 @@ public class VerificationAPI {
 
     public VerificationResponseObject verify(VerificationRequestObject verificationRequestObject) {
         ProductAggregate productAggregate = factory.create(verificationRequestObject);
-        String packState = service.verify(productAggregate);
-        return new VerificationResponseObject(packState);
+        PackState packState = service.verify(productAggregate);
+        return new VerificationResponseObject(packState.state);
     }
+
 }

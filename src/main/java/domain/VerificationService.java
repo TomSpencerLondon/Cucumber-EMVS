@@ -1,11 +1,11 @@
 package domain;
 
-import actions.ProductAggregate;
+import entities.PackState;
+import entities.ProductAggregate;
 
 public class VerificationService {
 
-  // FIXME Maybe consider changing to an Enum
-  public String verify(ProductAggregate productAggregate) {
+  public PackState verify(ProductAggregate productAggregate) {
     throw new UnsupportedOperationException("Implement me!");
   }
 }

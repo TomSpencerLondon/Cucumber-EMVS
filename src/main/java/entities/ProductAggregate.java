@@ -1,4 +1,4 @@
-package actions;
+package entities;
 
 public class ProductAggregate {
 
