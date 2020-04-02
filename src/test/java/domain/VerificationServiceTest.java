@@ -41,6 +41,6 @@ class VerificationServiceTest {
         VerificationService verificationService = new VerificationService(productService, packService);
         PackState state = verificationService.verify(requestObject);
 
-        assertEquals(PackState.ACTIVE.value, state.value);
+        assertEquals(PackState.ACTIVE, state);
     }
 }

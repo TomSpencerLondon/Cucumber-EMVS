@@ -23,13 +23,13 @@ public class ScenarioContext {
 
   public static void createProduct(String productState, String productScheme, String productCode, String productName) {
     ProductCode code = new ProductCode(productScheme, productCode);
-    products.add(new Product(ProductState.valueOf(productState), code, productName));
+    products.add(new Product(ProductState.fromString(productState), code, productName));
   }
 
   public static void createBatch(String batchState, String batchID, String productScheme, String productCode, String packSerialNumber,
                                  String packState) {
-    batches.add(new Batch(BatchState.valueOf(batchState), batchID, productScheme, productCode, Collections.singletonList(
-            new Pack(packSerialNumber, PackState.valueOf(packState))),
+    batches.add(new Batch(BatchState.fromString(batchState), batchID, productScheme, productCode, Collections.singletonList(
+            new Pack(packSerialNumber, PackState.fromString(packState))),
         oneYearFromNow()));
   }
 

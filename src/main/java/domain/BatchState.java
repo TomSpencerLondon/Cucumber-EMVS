@@ -1,5 +1,7 @@
 package domain;
 
+import entities.product.ProductState;
+
 public enum BatchState {
     ACTIVE("active");
 
@@ -7,5 +9,9 @@ public enum BatchState {
 
     BatchState(String value) {
         this.value = value;
+    }
+
+    public static BatchState fromString(String value) {
+        return BatchState.valueOf(value.toUpperCase());
     }
 }

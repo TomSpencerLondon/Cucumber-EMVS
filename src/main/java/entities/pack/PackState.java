@@ -9,4 +9,7 @@ public enum PackState {
     this.value = value;
   }
 
+  public static PackState fromString(String value) {
+    return PackState.valueOf(value.toUpperCase());
+  }
 }

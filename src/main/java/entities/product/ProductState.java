@@ -8,4 +8,8 @@ public enum ProductState {
     ProductState(String value) {
         this.value = value;
     }
+
+    public static ProductState fromString(String value) {
+        return ProductState.valueOf(value.toUpperCase());
+    }
 }
