@@ -5,6 +5,7 @@ import actions.VerificationRequestObject;
 import domain.PackService;
 import domain.ProductService;
 import domain.VerificationService;
+import entities.batch.Batch;
 import entities.product.Product;
 import entities.product.ProductCode;
 import io.cucumber.java.en.And;
@@ -21,6 +22,11 @@ public class StepDefinitions {
     @Given("Product exists in system")
     public void productExistsInSystem(Product product) {
         ScenarioContext.productRepository.save(product);
+    }
+
+    @And("Batch exists with active pack in system")
+    public void batchExistsWithActivePackInSystem(Batch batch) {
+        ScenarioContext.batchPackRepository.save(batch);
     }
 
     @And("{string} Batch exists {string} for product {string} {string} with {string} Pack {string}")
