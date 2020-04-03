@@ -1,7 +1,7 @@
 package acceptance;
 
 import acceptance.updatePackState.UpdateStatePackRequestObjectTransformer;
-import actions.UpdateStatePackRequestObject;
+import actions.update_pack_state.UpdateStatePackRequestObject;
 import actions.VerificationRequestObject;
 import entities.batch.Batch;
 import entities.product.Product;

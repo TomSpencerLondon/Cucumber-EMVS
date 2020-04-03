@@ -1,6 +1,6 @@
 package acceptance.updatePackState;
 
-import actions.UpdateStatePackRequestObject;
+import actions.update_pack_state.UpdateStatePackRequestObject;
 import entities.pack.PackState;
 import entities.product.ProductCode;
 import io.cucumber.datatable.DataTable;

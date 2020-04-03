@@ -1,6 +1,6 @@
 package acceptance;
 
-import actions.UpdateStatePackResponseObject;
+import actions.update_pack_state.UpdateStatePackResponseObject;
 import actions.VerificationResponseObject;
 import entities.batch.Batch;
 import entities.batch.BatchPackRepository;

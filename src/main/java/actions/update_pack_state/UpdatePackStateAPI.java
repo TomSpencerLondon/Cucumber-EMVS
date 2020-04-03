@@ -1,4 +1,4 @@
-package actions;
+package actions.update_pack_state;
 
 public class UpdatePackStateAPI {
     public UpdateStatePackResponseObject update(UpdateStatePackRequestObject requestObject) {

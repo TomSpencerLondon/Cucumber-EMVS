@@ -1,4 +1,4 @@
-package actions;
+package actions.update_pack_state;
 
 import entities.pack.PackState;
 

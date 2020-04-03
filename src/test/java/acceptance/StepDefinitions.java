@@ -1,7 +1,7 @@
 package acceptance;
 
-import actions.UpdatePackStateAPI;
-import actions.UpdateStatePackRequestObject;
+import actions.update_pack_state.UpdatePackStateAPI;
+import actions.update_pack_state.UpdateStatePackRequestObject;
 import actions.VerificationAPI;
 import actions.VerificationRequestObject;
 import domain.PackService;
