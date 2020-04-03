@@ -36,11 +36,8 @@ public class StepDefinitions {
     }
 
     @When("Dispenser asks for verification")
-    public void dispenserAsksForVerification() {
+    public void dispenserAsksForVerification(VerificationRequestObject verificationRequestObject) {
         VerificationAPI verificationAPI = new VerificationAPI(new VerificationService(new ProductService(ScenarioContext.productRepository), new PackService(ScenarioContext.batchPackRepository)));
-        ProductCode productCode = new ProductCode("12345678901231", "GTIN");
-        VerificationRequestObject verificationRequestObject = new VerificationRequestObject(productCode, "123",
-                LocalDate.of(2020, 1, 1), "456", "Ibuprofen");
         ScenarioContext.captureResponse(verificationAPI.verify(verificationRequestObject));
     }
 

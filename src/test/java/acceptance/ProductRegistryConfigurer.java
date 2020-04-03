@@ -1,5 +1,6 @@
 package acceptance;
 
+import actions.VerificationRequestObject;
 import entities.batch.Batch;
 import entities.product.Product;
 import io.cucumber.core.api.TypeRegistry;
@@ -21,6 +22,9 @@ public class ProductRegistryConfigurer implements TypeRegistryConfigurer{
         );
         typeRegistry.defineDataTableType(
                 new DataTableType(Batch.class, new BatchTransformer())
+        );
+        typeRegistry.defineDataTableType(
+                        new DataTableType(VerificationRequestObject.class, new VerificationRequestObjectTransformer())
         );
     }
 }
