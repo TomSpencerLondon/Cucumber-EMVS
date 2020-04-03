@@ -13,4 +13,8 @@ public class Pack {
   public PackState getState() {
     return state;
   }
+
+  public void changeState(PackState desiredState) {
+    state = desiredState;
+  }
 }

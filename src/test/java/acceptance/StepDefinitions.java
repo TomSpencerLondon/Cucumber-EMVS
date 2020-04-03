@@ -4,10 +4,7 @@ import actions.update_pack_state.UpdatePackStateAPI;
 import actions.update_pack_state.UpdatePackStateRequestObject;
 import actions.VerificationAPI;
 import actions.VerificationRequestObject;
-import domain.PackService;
-import domain.ProductService;
-import domain.UpdatePackStateService;
-import domain.VerificationService;
+import domain.*;
 import entities.batch.Batch;
 import entities.product.Product;
 import io.cucumber.java.en.And;
@@ -48,7 +45,7 @@ public class StepDefinitions {
 
     @When("Dispenser changes current pack state")
     public void dispenserChangesCurrentPackState(UpdatePackStateRequestObject requestObject) {
-        UpdatePackStateAPI updatePackStateAPI = new UpdatePackStateAPI(new UpdatePackStateService());
+        UpdatePackStateAPI updatePackStateAPI = new UpdatePackStateAPI(new UpdatePackStateService(new ProductService(ScenarioContext.productRepository), new PackService(ScenarioContext.batchPackRepository), new PackStateTransitionValidator()));
         ScenarioContext.captureUpdatePackStateResponse(updatePackStateAPI.update(requestObject));
     }
 
