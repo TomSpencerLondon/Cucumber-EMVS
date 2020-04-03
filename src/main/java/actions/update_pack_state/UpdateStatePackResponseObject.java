@@ -1,7 +1,9 @@
 package actions.update_pack_state;
 
-import entities.pack.PackState;
-
 public class UpdateStatePackResponseObject {
-    public PackState state;
+    public String state;
+
+    public UpdateStatePackResponseObject(String state) {
+        this.state = state;
+    }
 }

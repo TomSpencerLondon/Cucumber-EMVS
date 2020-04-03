@@ -5,7 +5,7 @@ import entities.product.ProductCode;
 
 import java.time.LocalDate;
 
-public class UpdateStatePackRequestObject {
+public class UpdatePackStateRequestObject {
 
     public final ProductCode productCode;
     public final String batchID;
@@ -13,7 +13,7 @@ public class UpdateStatePackRequestObject {
     public final String packSerialNumber;
     public final PackState desiredState;
 
-    public UpdateStatePackRequestObject(ProductCode productCode, String batchID, LocalDate expiryDate, String packSerialNumber, PackState desiredState) {
+    public UpdatePackStateRequestObject(ProductCode productCode, String batchID, LocalDate expiryDate, String packSerialNumber, PackState desiredState) {
         this.productCode = productCode;
         this.batchID = batchID;
         this.expiryDate = expiryDate;

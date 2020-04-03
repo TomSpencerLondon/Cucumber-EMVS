@@ -1,11 +1,12 @@
 package acceptance;
 
 import actions.update_pack_state.UpdatePackStateAPI;
-import actions.update_pack_state.UpdateStatePackRequestObject;
+import actions.update_pack_state.UpdatePackStateRequestObject;
 import actions.VerificationAPI;
 import actions.VerificationRequestObject;
 import domain.PackService;
 import domain.ProductService;
+import domain.UpdatePackStateService;
 import domain.VerificationService;
 import entities.batch.Batch;
 import entities.product.Product;
@@ -46,8 +47,8 @@ public class StepDefinitions {
     }
 
     @When("Dispenser changes current pack state")
-    public void dispenserChangesCurrentPackState(UpdateStatePackRequestObject requestObject) {
-        UpdatePackStateAPI updatePackStateAPI = new UpdatePackStateAPI();
+    public void dispenserChangesCurrentPackState(UpdatePackStateRequestObject requestObject) {
+        UpdatePackStateAPI updatePackStateAPI = new UpdatePackStateAPI(new UpdatePackStateService());
         ScenarioContext.captureUpdatePackStateResponse(updatePackStateAPI.update(requestObject));
     }
 

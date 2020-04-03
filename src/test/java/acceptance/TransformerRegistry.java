@@ -1,7 +1,7 @@
 package acceptance;
 
-import acceptance.updatePackState.UpdateStatePackRequestObjectTransformer;
-import actions.update_pack_state.UpdateStatePackRequestObject;
+import acceptance.update_pack_state.UpdateStatePackRequestObjectTransformer;
+import actions.update_pack_state.UpdatePackStateRequestObject;
 import actions.VerificationRequestObject;
 import entities.batch.Batch;
 import entities.product.Product;
@@ -29,7 +29,7 @@ public class TransformerRegistry implements TypeRegistryConfigurer {
                 new DataTableType(VerificationRequestObject.class, new VerificationRequestObjectTransformer())
         );
         typeRegistry.defineDataTableType(
-                new DataTableType(UpdateStatePackRequestObject.class, new UpdateStatePackRequestObjectTransformer())
+                new DataTableType(UpdatePackStateRequestObject.class, new UpdateStatePackRequestObjectTransformer())
         );
     }
 }
