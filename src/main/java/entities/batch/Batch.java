@@ -5,6 +5,7 @@ import entities.product.ProductCode;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public class Batch {
 
@@ -27,6 +28,13 @@ public class Batch {
     }
 
     public Pack getPackBySerial(String serial) {
+        Optional<Pack> pack = packs.stream().filter(p ->
+                p.serialNumber.equals(serial)
+        ).findFirst();
+
+        if (pack.isPresent()) {
+            return pack.get();
+        }
         throw new UnsupportedOperationException();
     }
 
