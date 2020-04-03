@@ -3,13 +3,16 @@ package acceptance;
 import actions.VerificationRequestObject;
 import entities.batch.Batch;
 import entities.product.Product;
+import entities.product.ProductCode;
+import entities.product.ProductState;
 import io.cucumber.core.api.TypeRegistry;
 import io.cucumber.core.api.TypeRegistryConfigurer;
 import io.cucumber.datatable.DataTableType;
 
 import java.util.Locale;
+import java.util.Map;
 
-public class ProductRegistryConfigurer implements TypeRegistryConfigurer{
+public class TransformerRegistry implements TypeRegistryConfigurer{
     @Override
     public Locale locale() {
         return Locale.ENGLISH;
