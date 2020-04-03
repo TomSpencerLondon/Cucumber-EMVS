@@ -6,44 +6,58 @@ import domain.PackService;
 import domain.ProductService;
 import domain.VerificationService;
 import entities.batch.Batch;
+import entities.pack.Pack;
+import entities.pack.PackState;
 import entities.product.Product;
-import entities.product.ProductCode;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.javatuples.Triplet;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class StepDefinitions {
 
     @Given("Product exists in system")
-    public void productExistsInSystem(Product product) {
-        ScenarioContext.productRepository.save(product);
+    public void productExistsInSystem(List<Product> products) {
+        products.forEach(product -> ScenarioContext.productRepository.save(product));
     }
 
-    @And("Batch exists with active pack in system")
-    public void batchExistsWithActivePackInSystem(Batch batch) {
-        ScenarioContext.batchPackRepository.save(batch);
+    @And("Packs exists in system")
+    public void packsExistsInSystem(DataTable dataTable) {
+        dataTable.asMaps().forEach(pack -> {
+            Triplet<String, String, String> key = Triplet.with(
+                    pack.get("productCode"), pack.get("productSchema"), pack.get("batchID")
+            );
+
+            ArrayList<Pack> packList = ScenarioContext.packs.getOrDefault(key, new ArrayList<>());
+            packList.add(new Pack(
+                    pack.get("serialNumber"),
+                    PackState.fromString(pack.get("state"))
+            ));
+
+            ScenarioContext.packs.put(key, packList);
+        });
     }
 
-    @And("{string} Batch exists {string} for product {string} {string} with {string} Pack {string}")
-    public void batchExistsForProductWithPack(String batchState, String batchID, String productScheme, String productCode, String packState,
-                                              String packSerialNumber) {
-        ScenarioContext.createBatch(batchState, batchID, productScheme, productCode, packSerialNumber, packState);
+    @And("Batch exists with pack in system")
+    public void batchExistsWithActivePackInSystem(List<Batch> batches) {
+        batches.forEach(batch -> ScenarioContext.batchPackRepository.save(batch));
     }
 
     @When("Dispenser asks for verification")
-    public void dispenserAsksForVerification(VerificationRequestObject verificationRequestObject) {
+    public void dispenserAsksForVerification(List<VerificationRequestObject> requestObjects) {
         VerificationAPI verificationAPI = new VerificationAPI(new VerificationService(new ProductService(ScenarioContext.productRepository), new PackService(ScenarioContext.batchPackRepository)));
-        ScenarioContext.captureResponse(verificationAPI.verify(verificationRequestObject));
+        requestObjects.forEach(obj -> ScenarioContext.captureResponse(verificationAPI.verify(obj)));
     }
 
     @Then("NBS responds with Pack state {string}")
     public void nbsRespondsWithPackState(String packState) {
         assertEquals(packState, ScenarioContext.verificationResponseObject.state);
     }
-
 }

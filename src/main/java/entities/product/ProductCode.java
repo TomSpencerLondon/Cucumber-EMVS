@@ -2,15 +2,18 @@ package entities.product;
 
 public class ProductCode {
     public final String code;
-    public final String scheme;
+    public final String schema;
 
-    public ProductCode(String code, String scheme) {
+    public ProductCode(String code, String schema) {
+        if (code == null || schema == null) {
+            throw new UnsupportedOperationException();
+        }
         this.code = code;
-        this.scheme = scheme;
+        this.schema = schema;
     }
 
     public boolean isEquals(ProductCode productCode) {
         return code.equals(productCode.code) &&
-                scheme.equals(productCode.scheme);
+                schema.equals(productCode.schema);
     }
 }

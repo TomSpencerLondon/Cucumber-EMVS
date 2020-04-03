@@ -4,19 +4,19 @@ import entities.product.Product;
 import entities.product.ProductCode;
 import entities.product.ProductState;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.datatable.TableEntryTransformer;
 import io.cucumber.datatable.TableTransformer;
 
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ProductTransformer implements TableTransformer {
+public class ProductTransformer implements TableEntryTransformer<Product> {
     @Override
-    public Product transform(DataTable dataTable) throws Throwable {
-
-        Stream<Product> productStream = dataTable.cells()
-                .stream()
-                .skip(1)        // Skip header row
-                .map(fields -> new Product(ProductState.fromString(fields.get(3)), new ProductCode(fields.get(0), fields.get(1)), fields.get(2)));
-        return productStream.collect(Collectors.toList()).get(0);
+    public Product transform(Map<String, String> map) throws Throwable {
+        ProductCode productCode = new ProductCode(map.get("productCode"), map.get("productSchema"));
+        String productName = map.get("productName");
+        ProductState state = ProductState.fromString(map.get("productState"));
+        return new Product(state, productCode, productName);
     }
 }

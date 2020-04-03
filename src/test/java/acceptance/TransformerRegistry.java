@@ -2,6 +2,7 @@ package acceptance;
 
 import actions.VerificationRequestObject;
 import entities.batch.Batch;
+import entities.pack.Pack;
 import entities.product.Product;
 import entities.product.ProductCode;
 import entities.product.ProductState;

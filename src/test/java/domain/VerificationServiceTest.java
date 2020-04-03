@@ -30,7 +30,7 @@ class VerificationServiceTest {
         String batchId = "123";
         String packSerial = "456";
         VerificationRequestObject requestObject = new VerificationRequestObject(productCode, batchId,
-                LocalDate.of(2020, 1, 1), packSerial, "Ibuprofen");
+                LocalDate.of(2020, 1, 1), packSerial);
 
         given(productService.retrieve(productCode)).willReturn(product);
         given(product.getProductCode()).willReturn(productCode);

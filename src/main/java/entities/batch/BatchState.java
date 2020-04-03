@@ -1,7 +1,9 @@
 package entities.batch;
 
 public enum BatchState {
-    ACTIVE("active");
+    ACTIVE("active"),
+    EXPIRED("expired"),
+    RECALLED("recalled");
 
     public final String value;
 
