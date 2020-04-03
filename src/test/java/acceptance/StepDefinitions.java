@@ -1,5 +1,7 @@
 package acceptance;
 
+import actions.UpdatePackStateAPI;
+import actions.UpdateStatePackRequestObject;
 import actions.VerificationAPI;
 import actions.VerificationRequestObject;
 import domain.PackService;
@@ -7,13 +9,10 @@ import domain.ProductService;
 import domain.VerificationService;
 import entities.batch.Batch;
 import entities.product.Product;
-import entities.product.ProductCode;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 
@@ -46,4 +45,14 @@ public class StepDefinitions {
         assertEquals(packState, ScenarioContext.verificationResponseObject.state);
     }
 
+    @When("Dispenser changes current pack state")
+    public void dispenserChangesCurrentPackState(UpdateStatePackRequestObject requestObject) {
+        UpdatePackStateAPI updatePackStateAPI = new UpdatePackStateAPI();
+        ScenarioContext.captureUpdatePackStateResponse(updatePackStateAPI.update(requestObject));
+    }
+
+    @Then("NBS responds with new Pack state {string}")
+    public void nbsRespondsWithNewPackState(String packState) {
+        assertEquals(packState, ScenarioContext.updatePackStateResponseObject.state);
+    }
 }

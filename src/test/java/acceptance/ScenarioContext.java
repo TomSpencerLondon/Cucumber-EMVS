@@ -1,5 +1,6 @@
 package acceptance;
 
+import actions.UpdateStatePackResponseObject;
 import actions.VerificationResponseObject;
 import entities.batch.Batch;
 import entities.batch.BatchPackRepository;
@@ -18,6 +19,7 @@ public class ScenarioContext {
   public static VerificationResponseObject verificationResponseObject;
   public static BatchPackRepository batchPackRepository = new InMemoryBatchPackRepository();
   protected static ProductRepository productRepository = new InMemoryProductRepository();
+  protected static UpdateStatePackResponseObject updatePackStateResponseObject;
 
   public static void createProduct(String productState, String productScheme, String productCode, String productName) {
     ProductCode code = new ProductCode(productCode, productScheme);
@@ -37,5 +39,9 @@ public class ScenarioContext {
 
   public static void captureResponse(VerificationResponseObject response) {
     verificationResponseObject = response;
+  }
+
+  public static void captureUpdatePackStateResponse(UpdateStatePackResponseObject response){
+    updatePackStateResponseObject = response;
   }
 }

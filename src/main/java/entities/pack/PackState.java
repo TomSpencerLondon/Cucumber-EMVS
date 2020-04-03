@@ -1,7 +1,8 @@
 package entities.pack;
 
 public enum PackState {
-  ACTIVE("active");
+  ACTIVE("active"),
+  SUPPLIED("supplied");
 
   public final String value;
 
