@@ -19,6 +19,7 @@ public class BatchTransformer implements TableEntryTransformer<Batch> {
     Triplet<String, String, String> key = new Triplet<>(
             map.get("productCode"), map.get("productSchema"), map.get("batchID")
     );
+
     List<Pack> packs = ScenarioContext.packs.get(key);
     return new Batch(
             BatchState.fromString(map.get("batchState")),

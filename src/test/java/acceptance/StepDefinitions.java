@@ -1,5 +1,7 @@
 package acceptance;
 
+import actions.update_pack_state.UpdatePackStateAPI;
+import actions.update_pack_state.UpdateStatePackRequestObject;
 import actions.VerificationAPI;
 import actions.VerificationRequestObject;
 import domain.PackService;
@@ -60,4 +62,18 @@ public class StepDefinitions {
     public void nbsRespondsWithPackState(String packState) {
         assertEquals(packState, ScenarioContext.verificationResponseObject.state);
     }
+<<<<<<< HEAD
+=======
+
+    @When("Dispenser changes current pack state")
+    public void dispenserChangesCurrentPackState(UpdateStatePackRequestObject requestObject) {
+        UpdatePackStateAPI updatePackStateAPI = new UpdatePackStateAPI();
+        ScenarioContext.captureUpdatePackStateResponse(updatePackStateAPI.update(requestObject));
+    }
+
+    @Then("NBS responds with new Pack state {string}")
+    public void nbsRespondsWithNewPackState(String packState) {
+        assertEquals(packState, ScenarioContext.updatePackStateResponseObject.state);
+    }
+>>>>>>> master
 }
